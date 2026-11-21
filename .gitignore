@@ -1,0 +1,8 @@
+# Local secrets and transient artifacts
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+/local/
