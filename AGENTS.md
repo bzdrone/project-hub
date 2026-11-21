@@ -4,7 +4,15 @@ This hub is a starting point for humans and agents, not a central knowledge stor
 
 ## At startup
 
-Read `PROJECTS.md` in this directory. If the user has not specified a project or goal, ask what they want to work on. Do not load every destination project's context.
+Read `PROJECTS.md` in this directory. If `local/` exists, also read `local/AGENTS.md` and `local/PROJECTS.md`, and follow the local rules. If the user has not specified a project or goal, ask what they want to work on. Do not load every destination project's context.
+
+## Public and local layers
+
+This repository is public: it holds the routing method and shareable project entries. Private entries, their workspaces, and personal working rules live in `local/`, a separate private repository inside this hub's ignored `local/` folder. Its `PROJECTS.md` uses the same format, with `Workspace` paths relative to `local/`.
+
+- Never copy local content (private project names, paths, purposes, or personal rules) into public files.
+- Make a private entry public only when the user explicitly asks; then move its entry and workspace file together, after confirming the workspace lists only public directories and contains no private settings or references.
+- The ignore rule is a backup, not the boundary. Do not force-add files under `local/` to this repository.
 
 ## Route a request
 
@@ -21,5 +29,4 @@ Read `PROJECTS.md` in this directory. If the user has not specified a project or
 - Add projects only when explicitly requested. Creating or discovering a directory does not register it as a project. If a project is missing or its path is unavailable, explain and ask how to proceed.
 - Each workspace folder can be a separate repository with its own instructions and Git state. Do not assume the workspace creates a shared Git root or makes one folder's instructions apply to all others.
 - Preserve project-local instructions and tool permissions. Routing guidance does not override them.
-- Do not store credentials, confidential material, or raw session transcripts here.
-- Keep the directory useful to people reading Markdown directly; do not require a particular agent or runtime to understand it.
+- Do not store credentials, confidential material, or raw session transcripts here.- Keep the directory useful to people reading Markdown directly; do not require a particular agent or runtime to understand it.

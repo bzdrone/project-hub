@@ -38,9 +38,13 @@ Use relative folder paths for portability. On another machine, clone the directo
 
 ## Scope
 
-Routing is currently conversational and manual. This is not a dashboard, central knowledge store, task database, or automatic agent launcher. Choosing a destination does not change a running tool's working directory. Start a session in the destination when project-local discovery is needed.
+Routing is currently conversational and manual. This is not a dashboard, central knowledge store, task database, or automatic agent launcher. Choosing a destination does not change a running tool's working directory: an agent can work on the project from the hub using full paths, or you can start a fresh session in the destination so its local instructions load automatically.
 
-Keep project names, paths, and descriptions appropriate for the repository's audience. Never include credentials, confidential material, or session transcripts.
+## Public and local layers
+
+This repository holds the routing method and shareable project entries. Private projects and personal working rules go in an optional `local/` folder that is its own private repository, ignored by this one. Agents read `local/AGENTS.md` and `local/PROJECTS.md` when they exist. To make a private project public, move its entry and workspace file out of `local/`.
+
+Never include credentials, confidential material, or session transcripts in either layer.
 
 ## License
 

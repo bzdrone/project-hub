@@ -4,6 +4,8 @@ Start here to choose where to work. A project can span several directories or re
 
 `Workspace` paths are relative to this repository. The workspace's `folders` array is the source of truth for directory membership; folder paths resolve relative to the `.code-workspace` file. `Primary folder` names a workspace folder for default CLI sessions. `Start here` is relative to that primary folder.
 
+Private projects are listed in `local/PROJECTS.md` when that private layer exists; see [AGENTS.md](AGENTS.md).
+
 ## project-hub
 
 - Purpose: The shared starting point for discovering projects and routing work.
@@ -32,4 +34,4 @@ Create the corresponding workspace following [workspaces/README.md](workspaces/R
 
 Optional fields: `Aliases` for alternate names and `Related projects` for shared knowledge or skill projects.
 
-A directory does not become a registered project merely because it exists. Add projects only when explicitly requested, and register only existing projects with real destinations. Knowledge and skill repositories can be added using the same format.
+Decide whether an entry is public before adding it. Public entries go here; private entries and their workspaces go in `local/`. A directory does not become a registered project merely because it exists. Add projects only when explicitly requested, and register only existing projects with real destinations. Knowledge and skill repositories can be added using the same format.
