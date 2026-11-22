@@ -14,6 +14,15 @@ Private projects are listed in `local/PROJECTS.md` when that private layer exist
 - Start here: AGENTS.md
 - Use when: Adding or updating project routes, improving discovery, or changing how participants enter projects.
 
+## arcade-shooter
+
+- Purpose: A TypeScript-first MakeCode Arcade shooter and learning path for gameplay concepts that transfer to FPS modding.
+- Aliases: arcade
+- Workspace: [workspaces/arcade-shooter.code-workspace](workspaces/arcade-shooter.code-workspace)
+- Primary folder: arcade-shooter
+- Start here: AGENTS.md
+- Use when: Developing the shooter example, its Blocks-friendly customization API, or modding lessons.
+
 ---
 
 ## Adding a project
