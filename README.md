@@ -25,6 +25,7 @@ Humans can start with [PROJECTS.md](PROJECTS.md); agents start with [AGENTS.md](
 - [AGENTS.md](AGENTS.md): how to match a request to a project and hand off work.
 - [workspaces/](workspaces/README.md): versioned VS Code workspaces that tie each project's directories together.
 - `CLAUDE.md` and `.github/copilot-instructions.md`: thin entry points to the same routing instructions.
+- [bin/hub](bin/hub): optional launcher that starts Claude Code in a project with its workspace folders.
 
 Pi and Codex can use `AGENTS.md`; Claude Code and VS Code Copilot have dedicated pointers. Automatic discovery depends on the client's instruction-loading rules; the same files can also be read directly.
 
@@ -38,7 +39,20 @@ Use relative folder paths for portability. On another machine, clone the directo
 
 ## Scope
 
-Routing is currently conversational and manual. This is not a dashboard, central knowledge store, task database, or automatic agent launcher. Choosing a destination does not change a running tool's working directory: an agent can work on the project from the hub using full paths, or you can start a fresh session in the destination so its local instructions load automatically.
+Routing is conversational. This is not a dashboard, central knowledge store, or task database. Choosing a destination does not change a running tool's working directory: an agent can work on the project from the hub using full paths, or you can start a fresh session in the destination so its local instructions load automatically.
+
+## Launch Claude Code in a project
+
+`bin/hub` starts Claude Code with exactly a project's directories, read from its workspace file. It needs Bash and Node.js.
+
+```sh
+bin/hub                  # start in the hub to choose a project
+bin/hub arcade-shooter   # start in the primary folder, --add-dir the others and the hub
+```
+
+The project can be named by id or alias, from `PROJECTS.md` or `local/PROJECTS.md`. Extra arguments are passed to `claude`.
+
+A session started in a project loads that project's instructions, not the hub's. So the launcher appends hub context to the system prompt: where the hub and its project lists are, plus `local/AGENTS.md` when it exists, because those personal rules apply to every project worked on from the hub. The hub's routing instructions are left out, because routing is already done. The hub is added as a directory only so its project lists can be read; it is not added to project workspaces. To call it from anywhere, add a shell function such as `hub() { ~/Source/project-hub/bin/hub "$@"; }`.
 
 ## Public and local layers
 

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Start Claude Code in the hub, or in a project with its workspace folders.
+#
+#   hub                      start in the hub to choose a project
+#   hub <project> [args...]  start in the project's primary folder, adding its
+#                            other workspace folders with --add-dir
+#
+# Extra arguments are passed to claude. Runs as its own process, so the
+# calling terminal's directory is unchanged.
+set -euo pipefail
+
+hub_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && { pwd -W 2>/dev/null || pwd; })"
+
+if [[ $# -eq 0 || $1 == -* ]]; then
+  cd "$hub_root"
+  exec claude "$@"
+fi
+
+project=$1
+shift
+
+folders="$(node "$hub_root/bin/resolve-project.mjs" "$hub_root" "$project")"
+mapfile -t dirs <<<"$folders"
+
+# The hub is added for access to its project lists, not as a project folder.
+add_dirs=(--add-dir "$hub_root")
+for dir in "${dirs[@]:1}"; do
+  add_dirs+=(--add-dir "$dir")
+done
+
+# A session started in a project does not load the hub's instructions, so pass
+# on the hub-wide context: where the hub is, and the personal working rules in
+# local/AGENTS.md, which apply to every project worked on from the hub.
+context="This session was started from the project hub at $hub_root for the hub project \"$project\" (workspace folders: ${dirs[*]}). The project's own AGENTS.md and CLAUDE.md govern work in it. The hub lists other projects and shared capabilities in $hub_root/PROJECTS.md and, if present, $hub_root/local/PROJECTS.md; read them when the user asks about another project or a shared capability, and whenever a task calls for research (looking something up, checking facts, gathering or citing sources): the research capability listed there has a knowledge collection to check first and tools to download and file new sources."
+if [[ -f $hub_root/local/AGENTS.md ]]; then
+  context+=$'\n\n'"The following rules come from the hub and apply in addition to the project's own instructions:"$'\n\n'
+  context+="$(<"$hub_root/local/AGENTS.md")"
+fi
+
+cd "${dirs[0]}"
+exec claude "${add_dirs[@]}" --append-system-prompt "$context" "$@"
