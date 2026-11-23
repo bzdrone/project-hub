@@ -3,6 +3,10 @@
     {
       "name": "arcade-shooter",
       "path": "../../arcade-shooter"
+    },
+    {
+      "name": "phaser-shooter",
+      "path": "../../phaser-shooter"
     }
   ]
 }

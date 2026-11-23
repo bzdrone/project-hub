@@ -16,12 +16,12 @@ Private projects are listed in `local/PROJECTS.md` when that private layer exist
 
 ## arcade-shooter
 
-- Purpose: A TypeScript-first MakeCode Arcade shooter and learning path for gameplay concepts that transfer to FPS modding.
+- Purpose: Distinct MakeCode Arcade and Phaser shooter tools for creating and learning gameplay concepts that transfer to Battlefield 6 Portal.
 - Aliases: arcade
 - Workspace: [workspaces/arcade-shooter.code-workspace](workspaces/arcade-shooter.code-workspace)
 - Primary folder: arcade-shooter
 - Start here: AGENTS.md
-- Use when: Developing the shooter example, its Blocks-friendly customization API, or modding lessons.
+- Use when: Developing either shooter implementation, the MakeCode Blocks-friendly customization API, or Portal modding lessons. Phaser source and tooling belong in the phaser-shooter workspace folder.
 
 ---
 
