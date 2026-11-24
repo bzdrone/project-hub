@@ -11,11 +11,7 @@ cd ~/Source/project-hub
 pi
 ```
 
-Or open the hub workspace in VS Code:
-
-```sh
-code ~/Source/project-hub/workspaces/project-hub.code-workspace
-```
+To open a workspace in VS Code, find its `Workspace` link in [PROJECTS.md](PROJECTS.md) or, when present, `local/PROJECTS.md`, then open that file. The hub's own workspace is maintained in the local layer.
 
 Humans can start with [PROJECTS.md](PROJECTS.md); agents start with [AGENTS.md](AGENTS.md).
 

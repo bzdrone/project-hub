@@ -6,14 +6,6 @@ Start here to choose where to work. A project can span several directories or re
 
 Private projects are listed in `local/PROJECTS.md` when that private layer exists; see [AGENTS.md](AGENTS.md).
 
-## project-hub
-
-- Purpose: The shared starting point for discovering projects and routing work.
-- Workspace: [workspaces/project-hub.code-workspace](workspaces/project-hub.code-workspace)
-- Primary folder: project-hub
-- Start here: AGENTS.md
-- Use when: Adding or updating project routes, improving discovery, or changing how participants enter projects.
-
 ## arcade-shooter
 
 - Purpose: Distinct MakeCode Arcade and Phaser shooter tools for creating and learning gameplay concepts that transfer to Battlefield 6 Portal.
