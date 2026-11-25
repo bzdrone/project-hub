@@ -17,6 +17,18 @@ Private projects are listed in `local/PROJECTS.md` when that private layer exist
 
 ---
 
+## portal-rules
+
+- Purpose: Convert Battlefield 6 Portal rules workspaces into TypeScript, extract spatial maps and mutators from experience bundles, and compare the output with EA's exports.
+- Aliases: portal
+- Workspace: [workspaces/portal-rules.code-workspace](workspaces/portal-rules.code-workspace)
+- Primary folder: portal-rules
+- Start here: AGENTS.md
+- Use when: Converting or checking Portal rules, extracting bundle parts, or investigating Portal rules semantics.
+- Related projects: arcade-shooter (its Phaser simulator runs the converted scripts)
+
+---
+
 ## Adding a project
 
 Copy this format above the separator:
